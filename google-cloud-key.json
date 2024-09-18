@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "starry-journal-435913-d7",
+  "private_key_id": "88703b5c49b2eb89d9d8b45628acd918de94ddbd",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC957sfPIJgr9mx\ndpFWqnsXFZwc+PzJOYtiLcy19CMhdDph9UBJUx1wFEPlWxr850lxobdK0c6kpAgQ\n5lr72a/U6pr8/FE0+fVTYpT9gbci2y719qBxTMErRRrJYQ3eSRddCn+ifW51rWCs\nhqvgOP4ziXG7Mfb4WYcHGFAJ/oBegGpG6kBrnxZCVrkgsbcoIu4VL1oQJkYWY7dv\ni5ILPo1XLmVSiVJ4HAcaruWnlmkBRO7VjcYKBZOHIzluuGZFs2OECNl/4B2DD85Q\ne1ebix285+M1qAKjy3iNGPnFv/P67sO/7IDzNxxnRTBQA7uiaNgVqzMonfNhKv6d\n4PATNT+VAgMBAAECggEAAgMJvkcYQUsP/3gXbyzTjZ16ka04ZTbtJ/JzTCTZgD9K\nfhSDzEMRRvQHR/4ITwpx0CNW8K4pT9sIK1Q16F3eRNOr0Kz6q2KVrwLFFTBGvIhI\nWAzrnnY1lbBA4heVnYsRapl3sS2bP+m5N56St3QwsZkkIxG9pzk8EhFaialLfI4B\n1rVJppJllip0yqRCJOkaNeu6jkmwiNcRI8Kc4polGW3uwAl+9Qfkmj/ILARqVpkF\ncr0p6CiTozvEPIRUa5xOBJc5tEP8S0Pmh7WpYUMX+IDQ+U7MCBdGLN9qe3Jjlybx\nROdXo+dRjk2/YHrOXzqSVxWPmVXirHke5bX92RfyAQKBgQDdoBPUdFbWY6u6wvYy\nzGayxv/GtKJkma7S6AF+wiVyqd/8zGVzS4pAvN3QcdxBf1K2Vqsu2838jLWIf1Bv\nBCmtPnsft6EVavndJbtN85xvhoy64LomgHGpo3q64C+MybdMePidQMollTcGbLk4\nTcWFPuUvF0CwhnEH/0zXVhP9wwKBgQDbXCpP0Q1rjPQuuJuhKAkR1UrAd/u76AbY\nIpSQSkKZia+BDJMUoi2CAE/VJlwZ+Nduy92/xAFc/gt5JL1AZTQbIDlCarT+Li58\nnjXNt7aJ77gzFExtcSYRUQgMO3SDI1Jk9xWzNxmcQYH38wXAhkGsJnPR4e8t9mCt\nCgFDzWg/xwKBgQC1PcLZvKaDPxFicyvZ0RSvYVQs0O347UFuEvOeEPGE+u1FFHZm\nukD+vjV70JF6MsCWgvwNHw4uWXfff5Zso2/d0Lnp70bZeBmMQ94QWof1IIiYD03M\nTMAnJZ0plErujMvMyyUtnJ1z7LoKFAHIzLkaRZwxTYfGlLt8+ciCVU+V9wKBgCi2\nAzhLASWbxFnDc0bGimBf6H6uBe9K0bJdQJtC3Pdn4UWfEtD6hF2jNy3E78T2NO1g\nMqh7dRFQKMrz8Ze48KG0KkxUR4EBCymfpzalyN/yuInqU4DgRgNiuY6jni0Uah9I\n6CMZr8wbMEbXOJMRl7CedlJWjzBFkI2s1K1DuvxTAoGAVaVJI0ohrYKUJOHzOyDS\nmSMWKN6TOd8AeYpIAtiIvcufjiyhIYNCxW285P1ApSz0kMFiBck+vxm1bEbQEj38\nAqo2cdRfdoVzhyR7uAmV/pMYahK3nnEGVTxeQZRTXEp2rvnYaOpbL89J+x8qBPsM\no0SPI9KaNPqS9GNC82AL9Lc=\n-----END PRIVATE KEY-----\n",
+  "client_email": "imageanalysis@starry-journal-435913-d7.iam.gserviceaccount.com",
+  "client_id": "106240403118864766472",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/imageanalysis%40starry-journal-435913-d7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

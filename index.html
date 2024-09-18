@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Instagram Başlık Oluşturucu</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #8e44ad;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        #imageInput {
+            display: none;
+        }
+        label[for="imageInput"], button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        label[for="imageInput"]:hover, button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0,0,0,0.15);
+            background: linear-gradient(45deg, #fad0c4 0%, #ff9a9e 99%, #ff9a9e 100%);
+        }
+        #imagePreview {
+            max-width: 100%;
+            max-height: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        #imagePreview:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #8e44ad;
+        }
+        h2 {
+            color: #9b59b6;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            padding: 5px;
+            background: rgba(155, 89, 182, 0.1);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        li:hover {
+            background: rgba(155, 89, 182, 0.2);
+            transform: translateX(5px);
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Instagram Başlık Oluşturucu</h1>
+    <label for="imageInput">Fotoğraf Seç</label>
+    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)">
+    <button onclick="analyzeImage()">Analiz Et ve Başlık Oluştur</button>
+    <img id="imagePreview" src="" alt="Görüntü Önizleme" style="display:none;">
+    <div id="loading" class="loading">Yapay zeka düşünüyor... 🤔✨</div>
+    <div id="result"></div>
+
+    <script>
+        function previewImage(event) {
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.src = URL.createObjectURL(event.target.files[0]);
+            imagePreview.style.display = 'block';
+        }
+
+        async function analyzeImage() {
+            const fileInput = document.getElementById('imageInput');
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('Lütfen bir görüntü seçin');
+                return;
+            }
+
+            const loading = document.getElementById('loading');
+            loading.style.display = 'block';
+
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                const imageData = event.target.result;
+                try {
+                    const response = await fetch('/analyze', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ image: imageData }),
+                    });
+                    const data = await response.json();
+                    if (data.error) {
+                        throw new Error(data.error);
+                    }
+                    document.getElementById('result').innerHTML = `
+                        <h2>Oluşturulan Başlık:</h2>
+                        <p>${data.caption || 'Başlık oluşturulamadı.'}</p>
+                        <h2>Önerilen Etiketler:</h2>
+                        <p>${data.hashtags ? data.hashtags.join(' ') : 'Etiket önerisi bulunamadı.'}</p>
+                        <h2>Analiz Sonuçları:</h2>
+                        <ul>
+                            <li>Nesneler: ${data.analysis.nesneler ? data.analysis.nesneler.join(', ') : 'Tespit edilemedi'}</li>
+                            <li>Renkler: ${data.analysis.renkler ? data.analysis.renkler.join(', ') : 'Tespit edilemedi'}</li>
+                            <li>Yüz Sayısı: ${data.analysis.yuzSayisi || 0}</li>
+                            <li>Etiketler: ${data.analysis.etiketler ? data.analysis.etiketler.join(', ') : 'Tespit edilemedi'}</li>
+                        </ul>
+                    `;
+                } catch (error) {
+                    console.error('Hata:', error);
+                    document.getElementById('result').innerText = 'Hata oluştu: ' + error.message;
+                } finally {
+                    loading.style.display = 'none';
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
